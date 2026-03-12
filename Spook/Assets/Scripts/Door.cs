@@ -17,16 +17,14 @@ public class Door : MonoBehaviour
     [SerializeField] private Material redLight;
 
     //temporary
-    private float yStart;
-    private float yEnd;
+    [SerializeField] private float yStart;
+    [SerializeField] private float yEnd;
 
 
     private void Awake()
     {
         _renderer = doorObject.GetComponent<Renderer>();
         SwitchState(doorState);
-        yStart = doorObject.transform.position.y;
-        yEnd = yStart + 2.5f; //temporary
     }
 
     public void Unlock()
@@ -43,8 +41,8 @@ public class Door : MonoBehaviour
         if (doorState == DoorStates.Inaccessible)
             return;
 
-        SwitchState(DoorStates.Locked);
         Close();
+        SwitchState(DoorStates.Locked);
     }
 
     public void Open()
@@ -55,7 +53,7 @@ public class Door : MonoBehaviour
         //animation + other stuff
 
         //this is temporary
-        doorObject.transform.position = new Vector3(doorObject.transform.position.x, yEnd, doorObject.transform.position.z);
+        doorObject.transform.localPosition = new Vector3(doorObject.transform.localPosition.x, yEnd, doorObject.transform.localPosition.z);
     }
 
     public void Close()
@@ -66,7 +64,7 @@ public class Door : MonoBehaviour
         //animation + other stuff
 
         //this is temporary
-        doorObject.transform.position = new Vector3(doorObject.transform.position.x, yStart, doorObject.transform.position.z);
+        doorObject.transform.localPosition = new Vector3(doorObject.transform.localPosition.x, yStart, doorObject.transform.localPosition.z);
     }
 
     private void SwitchState(DoorStates newState)

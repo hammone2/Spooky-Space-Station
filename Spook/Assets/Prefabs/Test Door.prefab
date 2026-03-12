@@ -51,6 +51,8 @@ MonoBehaviour:
   greenLight: {fileID: 2100000, guid: d2fee3808f6d4c343b089be228b0f3dc, type: 2}
   yellowLight: {fileID: 2100000, guid: b391dd1a149c9f54cbd2476c061cc2cd, type: 2}
   redLight: {fileID: 2100000, guid: 1ed2b457a66f35d4db23a9c1c8bf2ceb, type: 2}
+  yStart: 1.25
+  yEnd: 3.75
 --- !u!1 &732546031975510744
 GameObject:
   m_ObjectHideFlags: 0
