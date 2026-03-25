@@ -5,6 +5,7 @@ public class Airlock : MonoBehaviour
 {
     [SerializeField] private Door door1;
     [SerializeField] private Door door2;
+    [SerializeField] private float sequenceTime = 2f;
     private Door activeDoor;
     private bool canPressButton = true;
 
@@ -24,7 +25,7 @@ public class Airlock : MonoBehaviour
         activeDoor.Lock();
         canPressButton = false;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(sequenceTime);
 
         if (activeDoor == door1)
             activeDoor = door2;
