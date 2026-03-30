@@ -32,7 +32,16 @@ public class AIMovement : MonoBehaviour
             patrolRouteIndex = Random.Range(0, patrolPoints.Length);
         } while (patrolRouteIndex == previousPatrolRoute);
 
+        previousPatrolRoute = patrolRouteIndex; //prevents us from skipping the 1st point
+
         MoveToDestination(patrolPoints[patrolRouteIndex].position, speed);
+    }
+
+    public void StopMoving()
+    {
+        agent.isStopped = true;
+        destinationReached = true;
+        OnDestinationReached.Invoke();
     }
 
     private void Update()
@@ -44,9 +53,7 @@ public class AIMovement : MonoBehaviour
         {
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
-                agent.isStopped = true;
-                destinationReached = true;
-                OnDestinationReached.Invoke();
+                StopMoving();
             }
         }
     }

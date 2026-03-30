@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class TestAI : MonoBehaviour
 {
+    [SerializeField] private float patrolSpeed;
+    [SerializeField] private float chaseSpeed;
+
     private enum States
     {
         IDLE,
@@ -11,14 +14,34 @@ public class TestAI : MonoBehaviour
     }
     private States state = States.IDLE;
     private AIMovement movement;
+    [SerializeField] private Sensor sensor;
 
 
     private void Awake()
     {
         movement = GetComponent<AIMovement>();
+        movement.OnDestinationReached.AddListener(OnTargetReached);
     }
 
-    private void SwitchState(States state)
+    private void Start()
+    {
+        Patrol();
+    }
+
+    public void Chase()
+    {
+        movement.MoveToDestination(Player.Instance.transform.position, chaseSpeed);
+        state = States.CHASE;
+    }
+
+    public void Patrol()
+    {
+        movement.Patrol(patrolSpeed);
+        state = States.PATROL;
+    }
+
+
+    private void OnTargetReached()
     {
         switch (state)
         {
@@ -26,9 +49,14 @@ public class TestAI : MonoBehaviour
                 return;
 
             case States.PATROL:
+                Patrol();
                 return;
 
             case States.CHASE:
+                if (sensor.isActive)
+                    Chase();
+                else
+                    Patrol();
                 return;
 
             case States.ATTACK:
