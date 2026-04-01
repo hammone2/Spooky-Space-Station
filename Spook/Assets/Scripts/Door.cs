@@ -10,18 +10,22 @@ public class Door : MonoBehaviour
     }
     [SerializeField] private DoorStates doorState;
 
-    private Renderer renderer; //replace this later with light object ref
+    private Renderer _renderer; //replace this later with light object ref
+    [SerializeField] private GameObject doorObject; //temporary
     [SerializeField] private Material greenLight;
     [SerializeField] private Material yellowLight;
     [SerializeField] private Material redLight;
 
+    //temporary
+    [SerializeField] private float yStart;
+    [SerializeField] private float yEnd;
+
 
     private void Awake()
     {
-        renderer = GetComponent<Renderer>();
+        _renderer = doorObject.GetComponent<Renderer>();
         SwitchState(doorState);
     }
-
 
     public void Unlock()
     {
@@ -37,8 +41,8 @@ public class Door : MonoBehaviour
         if (doorState == DoorStates.Inaccessible)
             return;
 
-        SwitchState(DoorStates.Locked);
         Close();
+        SwitchState(DoorStates.Locked);
     }
 
     public void Open()
@@ -46,7 +50,10 @@ public class Door : MonoBehaviour
         if (doorState != DoorStates.Unlocked)
             return;
 
-        //animation + other stuff 
+        //animation + other stuff
+
+        //this is temporary
+        doorObject.transform.localPosition = new Vector3(doorObject.transform.localPosition.x, yEnd, doorObject.transform.localPosition.z);
     }
 
     public void Close()
@@ -55,6 +62,9 @@ public class Door : MonoBehaviour
             return;
 
         //animation + other stuff
+
+        //this is temporary
+        doorObject.transform.localPosition = new Vector3(doorObject.transform.localPosition.x, yStart, doorObject.transform.localPosition.z);
     }
 
     private void SwitchState(DoorStates newState)
@@ -63,16 +73,24 @@ public class Door : MonoBehaviour
         switch (doorState)
         {
             case DoorStates.Unlocked:
-                renderer.material = greenLight;
+                _renderer.material = greenLight;
                 break;
 
             case DoorStates.Locked:
-                renderer.material = yellowLight;
+                _renderer.material = yellowLight;
                 break;
 
             case DoorStates.Inaccessible:
-                renderer.material = redLight;
+                _renderer.material = redLight;
                 break;
         }
+    }
+
+    private void OnValidate() //make it so I can see the door color in the scene view
+    {
+        if (!_renderer)
+            _renderer = doorObject.GetComponent<Renderer>();
+
+        SwitchState(doorState);
     }
 }
