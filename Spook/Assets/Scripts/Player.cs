@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -38,5 +39,10 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Spacesuit equipped!");
         helmet.SetActive(true);
+    }
+
+    public void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
