@@ -40,7 +40,6 @@ public class TestAI : MonoBehaviour
         state = States.PATROL;
     }
 
-
     private void OnTargetReached()
     {
         switch (state)

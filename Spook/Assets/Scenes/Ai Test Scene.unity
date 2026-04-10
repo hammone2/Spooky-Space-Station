@@ -1176,6 +1176,7 @@ GameObject:
   - component: {fileID: 1533597526}
   - component: {fileID: 1533597525}
   - component: {fileID: 1533597528}
+  - component: {fileID: 1533597529}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Untagged
@@ -1356,6 +1357,19 @@ MonoBehaviour:
   patrolSpeed: 3
   chaseSpeed: 7
   sensor: {fileID: 221975009}
+--- !u!114 &1533597529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533597520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d02d14fdd9fc474a8245dd9a56a60da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  chaseSpeed: 0
 --- !u!1 &1577614630
 GameObject:
   m_ObjectHideFlags: 0
