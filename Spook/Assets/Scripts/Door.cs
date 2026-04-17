@@ -1,3 +1,4 @@
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -15,6 +16,7 @@ public class Door : MonoBehaviour
     [SerializeField] private Material greenLight;
     [SerializeField] private Material yellowLight;
     [SerializeField] private Material redLight;
+    [SerializeField] private NavMeshLink navLink;
 
     //temporary
     [SerializeField] private float yStart;
@@ -25,6 +27,7 @@ public class Door : MonoBehaviour
     {
         _renderer = doorObject.GetComponent<Renderer>();
         SwitchState(doorState);
+        navLink.activated = false;
     }
 
     public void Unlock()
@@ -50,6 +53,8 @@ public class Door : MonoBehaviour
         if (doorState != DoorStates.Unlocked)
             return;
 
+        navLink.activated = true;
+
         //animation + other stuff
 
         //this is temporary
@@ -60,6 +65,8 @@ public class Door : MonoBehaviour
     {
         if (doorState != DoorStates.Unlocked)
             return;
+
+        navLink.activated = false;
 
         //animation + other stuff
 

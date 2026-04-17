@@ -51,4 +51,15 @@ public class WeaponSystem : MonoBehaviour
     {
         SwitchHand();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        WeaponPickup pickup = other.GetComponent<WeaponPickup>();
+
+        if (pickup)
+        {
+            SwitchWeapon(pickup.weaponID);
+            Destroy(pickup.gameObject);
+        }
+    }
 }
