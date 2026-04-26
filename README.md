@@ -1,4 +1,4 @@
-#__Spooky Space Station__
+# Spooky Space Station
 
 ## OVERVIEW:
 
