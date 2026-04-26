@@ -1,13 +1,13 @@
-__Spooky Space Station__
+#__Spooky Space Station__
 
-OVERVIEW:
+## OVERVIEW:
 
 Spooky Space Station is a VR game where you must escape a space station infested with monsters. Find keycards to open doors, spacesuits to use airlocks, and a weapon to fight your way to the shuttle and escape!
 
 The game is a proof of concept, with no environment art, SFX, or sounds. The level is fully playable/functional with enemies, working doors, lose/win condition, and items.
 
 
-CONTROLS:
+## CONTROLS:
 
 - Left stick: Move
 - Right stick: Teleport
