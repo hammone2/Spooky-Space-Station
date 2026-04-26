@@ -9,8 +9,8 @@ The game is a proof of concept, with no environment art, SFX, or sounds. The lev
 
 CONTROLS:
 
--Left stick: Move
--Right stick: Teleport
--A Button: Jump
--Attack: Swing sweapon with your hand
--Pick up stuff: point at the item and grab
+- Left stick: Move
+- Right stick: Teleport
+- A Button: Jump
+- Attack: Swing sweapon with your hand
+- Pick up stuff: point at the item and grab
